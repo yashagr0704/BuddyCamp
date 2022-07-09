@@ -23,9 +23,27 @@ const seedDB = async () => {
             author: '62c4cc7f74dc418b4b4c2cba',
             location: `${cities[random1000].city},${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
-            image: 'https://source.unsplash.com/collection/484351',
+
             description: 'Lorem dwnqdx xnqxkxk xnxnaxx xnxanxxa kqxxx,wnx wqnxxn,w xqjnxnxx xqnjxqwx  xqjnxx,xwn wxjnxqwnj qjnnjqwnd nqw,dxxnd, nqdkdqwx qwxnxwnnxk',
-            price: price
+            price: price,
+            geometry: {
+                type: "Point",
+                coordinates: [-113.1331, 47.0202]
+            },
+            images: [
+
+                {
+                    url: 'https://res.cloudinary.com/buddycamp/image/upload/v1657339647/buddycamp/sklfclmyohup6k7umygi.jpg',
+                    filename: 'buddycamp/sklfclmyohup6k7umygi'
+
+                },
+                {
+                    url: 'https://res.cloudinary.com/buddycamp/image/upload/v1657339647/buddycamp/qt4bxwqeag9fsj5l3wxl.jpg',
+                    filename: 'buddycamp/qt4bxwqeag9fsj5l3wxl'
+
+                }
+            ]
+
         })
 
         await camp.save();
@@ -36,3 +54,4 @@ const seedDB = async () => {
 seedDB().then(() => {
     mongoose.connection.close()
 });
+

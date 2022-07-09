@@ -1,4 +1,7 @@
-
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+//console.log(process.env.CLOUDINARY_KEY);
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -73,7 +76,7 @@ app.use('/campgrounds/:id/reviews', reviews)
 app.get('/', (req, res) => {
     res.render('home')
 });
-
+console.log(campgrounds);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
