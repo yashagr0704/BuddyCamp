@@ -1,4 +1,4 @@
-mapboxgl.accessToken = 'pk.eyJ1IjoieWFzaGFncjA3MDQwMyIsImEiOiJjbDVkaWNmM2kwcm1hM3BvMjRqcG50MW83In0.n9YeaykLzgWKBX3kKCtgdg';
+/*mapboxgl.accessToken = 'pk.eyJ1IjoieWFzaGFncjA3MDQwMyIsImEiOiJjbDVkaWNmM2kwcm1hM3BvMjRqcG50MW83In0.n9YeaykLzgWKBX3kKCtgdg';
 const map = new mapboxgl.Map({
     container: 'cluster-map',
     style: 'mapbox://styles/mapbox/dark-v10',
@@ -127,4 +127,4 @@ map.on('load', () => {
     map.on('mouseleave', 'clusters', () => {
         map.getCanvas().style.cursor = '';
     });
-});
+});*/
