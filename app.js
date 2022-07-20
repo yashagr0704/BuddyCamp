@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
 }
 //console.log(process.env.CLOUDINARY_KEY);
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -21,9 +22,12 @@ const User = require('./models/user');
 const userRoutes = require('./routes/users');
 const campgrounds = require('./routes/campgrounds');
 const reviews = require('./routes/reviews');
+//const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const dburl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp');
+mongoose.connect(dburl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -39,9 +43,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
+
 
 const sessionConfig = {
-    secret: 'thisshouldbeabettersecret!',
+
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -76,7 +83,7 @@ app.use('/campgrounds/:id/reviews', reviews)
 app.get('/', (req, res) => {
     res.render('home')
 });
-console.log(campgrounds);
+//console.log(campgrounds);
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))
